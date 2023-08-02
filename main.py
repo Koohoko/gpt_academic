@@ -71,7 +71,7 @@ def main():
                     with gr.Row():
                         resetBtn = gr.Button("重置", variant="secondary"); resetBtn.style(size="sm")
                         stopBtn = gr.Button("停止", variant="secondary"); stopBtn.style(size="sm")
-                        clearBtn = gr.Button("清除", variant="secondary", visible=False); clearBtn.style(size="sm")
+                        clearBtn = gr.Button("清除", variant="secondary"); clearBtn.style(size="sm")
                     if ENABLE_AUDIO: 
                         with gr.Row():
                             audio_mic = gr.Audio(source="microphone", type="numpy", streaming=True, show_label=False).style(container=False)
