@@ -56,7 +56,9 @@ openai_endpoint = "https://api.openai.com/v1/chat/completions"
 api2d_endpoint = "https://openai.api2d.net/v1/chat/completions"
 newbing_endpoint = "wss://sydney.bing.com/sydney/ChatHub"
 if not AZURE_ENDPOINT.endswith('/'): AZURE_ENDPOINT += '/'
-azure_endpoint = AZURE_ENDPOINT + f'openai/deployments/{AZURE_ENGINE}/chat/completions?api-version=2023-05-15'
+azure_endpoint = AZURE_ENDPOINT + f'openai/deployments/{AZURE_ENGINE}/chat/completions?api-version=2023-03-15-preview'
+azure_endpoint_gpt4_32k = AZURE_ENDPOINT + f'openai/deployments/{AZURE_ENGINE}-32k/chat/completions?api-version=2023-03-15-preview'
+
 # 兼容旧版的配置
 try:
     API_URL = get_conf("API_URL")
@@ -190,6 +192,15 @@ model_info = {
         "fn_without_ui": chatgpt_noui,
         "endpoint": azure_endpoint,
         "max_token": 8192,
+        "tokenizer": tokenizer_gpt4,
+        "token_cnt": get_token_num_gpt4,
+    },
+
+    "azure-gpt-4-32k":{
+        "fn_with_ui": chatgpt_ui,
+        "fn_without_ui": chatgpt_noui,
+        "endpoint": azure_endpoint_gpt4_32k,
+        "max_token": 32768,
         "tokenizer": tokenizer_gpt4,
         "token_cnt": get_token_num_gpt4,
     },
