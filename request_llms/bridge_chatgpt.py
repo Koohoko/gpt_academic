@@ -263,7 +263,8 @@ def predict(inputs, llm_kwargs, plugin_kwargs, chatbot, history=[], system_promp
                         continue
                     else:
                         # 一些垃圾第三方接口的出现这样的错误
-                        gpt_replying_buffer = gpt_replying_buffer + chunkjson['choices'][0]["delta"]["content"]
+                        continue
+                        # gpt_replying_buffer = gpt_replying_buffer + chunkjson['choices'][0]["delta"]["content"]
 
                     history[-1] = gpt_replying_buffer
                     chatbot[-1] = (history[-2], history[-1])
